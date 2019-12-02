@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from pixelmaker import PixelMapper
 import config as cfg
 import math
-
+print("test print")
 def dot(v,w):
     x,y = v
     X,Y = w
@@ -76,9 +76,9 @@ def objselect(dic, crd1, crd2):
 execution_path = os.getcwd()
 detector = ObjectDetection()
 detector.setModelTypeAsRetinaNet()
-detector.setModelPath( os.path.join(execution_path , "resnet50_coco_best_v2.0.1.h5"))
+detector.setModelPath( os.path.join(execution_path ,"pythonscripts" ,"resnet50_coco_best_v2.0.1.h5"))
 detector.loadModel()
-detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path ,"..","volume", cfg.PIC_URL_UPPER), output_image_path=os.path.join(execution_path, ".." , "volume","classified-road.jpg"))
+detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path ,"volume", cfg.PIC_URL_UPPER), output_image_path=os.path.join(execution_path, "volume","classified-road.jpg"))
 
 
 
@@ -96,4 +96,4 @@ convcoords = pixelToCoor(objectList)
 
 new_coords = objselect(convcoords, cfg.BAY_ZONE_UPPER[0], cfg.BAY_ZONE_UPPER[1])
 
-print("{\"",objectTypes[0], "\":", len(new_coords[objectTypes[0]]), ",\"", objectTypes[1],"\":", len(new_coords[objectTypes[1]]), "\"}")
+print("{\"",objectTypes[0], "\":", len(new_coords[objectTypes[0]]), ",\"", objectTypes[1],"\":", len(new_coords[objectTypes[1]]), "}")
